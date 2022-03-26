@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import logo from '/public/logo.png';
 
 const Navbar = () => (
-  <NavBar bg="success" variant="dark" expand="lg">
+  <NavBar collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Container>
       <NavBar.Brand>
         <Link className="navbar-brand" to="/">
           <img src={logo} width="27" height="34" alt="BaaP logo" />
-          <h3 className="d-inline align-middle pb-1">BaaP</h3>
+          <h3 className="d-inline align-middle pb-1 text-success">BaaP</h3>
         </Link>
       </NavBar.Brand>
-      <NavBar.Toggle aria-controls="basic-navbar-nav" />
-      <NavBar.Collapse id="basic-navbar-nav">
+      <NavBar.Toggle aria-controls="responsive-navbar-nav" />
+      <NavBar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
           <Link
             className={`nav-link${
@@ -21,6 +21,24 @@ const Navbar = () => (
             to="/forms/new"
           >
             Create new form
+          </Link>
+        </Nav>
+        <Nav>
+          <Link
+            className={`nav-link${
+              window.location.pathname === '/login' ? ' active' : ''
+            }`}
+            to="/login"
+          >
+            Login
+          </Link>
+          <Link
+            className={`nav-link${
+              window.location.pathname === '/signup' ? ' active' : ''
+            }`}
+            to="/signup"
+          >
+            Signup
           </Link>
         </Nav>
       </NavBar.Collapse>

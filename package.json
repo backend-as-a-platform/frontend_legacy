@@ -4,6 +4,12 @@
   "source": "public/index.html",
   "repository": "https://github.com/backend-as-a-platform/frontend",
   "license": "MIT",
+  "maintainers": [
+    "Arjun Shibu <arjunshibu1999@gmail.com>",
+    "Noble Mathew <noblemathew17@gmail.com>",
+    "Stefhina George <stefhina67@gmail.com>",
+    "Anitta Mary Thomas <anitta021997@gmail.com>"
+  ],
   "scripts": {
     "dev": "parcel -p 3000",
     "build": "parcel build",
@@ -23,7 +29,6 @@
   },
   "devDependencies": {
     "parcel": "^2.4.0",
-    "process": "^0.11.10",
     "serve": "^13.0.2"
   },
   "browserslist": {
