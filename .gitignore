@@ -2,3 +2,4 @@ node_modules
 dist
 *lock*
 .parcel-cache
+.env.[^e]*
