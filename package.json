@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "parcel -p 3000",
     "build": "parcel build",
-    "start": "serve dist",
+    "start": "serve -s dist",
     "build:start": "yarn build && yarn start"
   },
   "dependencies": {
