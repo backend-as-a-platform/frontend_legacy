@@ -14,7 +14,8 @@
     "dev": "parcel -p 3000",
     "build": "parcel build",
     "start": "serve -s dist",
-    "build:start": "yarn build && yarn start"
+    "build:start": "yarn build && yarn start",
+    "lint": "eslint ."
   },
   "dependencies": {
     "axios": "^0.26.1",
@@ -28,8 +29,13 @@
     "react-router-dom": "^6.2.2"
   },
   "devDependencies": {
+    "eslint": "^8.12.0",
+    "eslint-plugin-react": "^7.29.4",
     "parcel": "^2.4.0",
     "serve": "^13.0.2"
+  },
+  "alias": {
+    "process": false
   },
   "browserslist": {
     "production": [

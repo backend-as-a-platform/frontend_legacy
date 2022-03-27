@@ -1,3 +1,5 @@
 import axios from 'axios';
 
-export default axios.create({ baseURL: process.env.BACKEND_URI });
+const http = axios.create({ baseURL: process.env.BACKEND_URI });
+
+export default http;

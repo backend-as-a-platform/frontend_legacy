@@ -19,3 +19,7 @@ Build and start production server
 Development mode
 
 `yarn dev`
+
+Run code quality checks
+
+`yarn lint`

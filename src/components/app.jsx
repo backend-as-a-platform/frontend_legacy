@@ -1,14 +1,17 @@
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
+import { Container } from 'react-bootstrap';
 import '../css/app.css';
 import Navbar from './nav-bar';
 
 export default class App extends Component {
   render() {
     return (
-      <Fragment>
+      <>
         <Navbar />
-        <h1 className="mt-5 mb-4">Backend as a Platform (BaaP)</h1>
-      </Fragment>
+        <Container>
+          <h1 className="mt-5 mb-4">Backend as a Platform (BaaP)</h1>
+        </Container>
+      </>
     );
   }
 }
