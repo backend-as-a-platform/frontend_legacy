@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import { Component, createRef } from 'react';
-import { Container } from 'react-bootstrap';
 import Navbar from '../nav-bar';
 import FormModal from './form-modal';
 import http from '../../adapters/http';
@@ -11,13 +10,12 @@ window.$ = $;
 
 require('jquery-ui-sortable');
 require('formBuilder');
-require('formBuilder/dist/form-render.min');
 
 export default class FormBuilder extends Component {
   constructor(props) {
     super(props);
 
-    this.fb = createRef();
+    this.formBuilder = createRef();
     this.handler = this.handler.bind();
     this.redirect = this.redirect.bind();
 
@@ -63,9 +61,8 @@ export default class FormBuilder extends Component {
 
   componentDidUpdate() {
     if (this.state.name && !this.state.error) {
-      $(this.fb.current).formBuilder(this.formOptions);
+      $(this.formBuilder.current).formBuilder(this.formOptions);
     }
-    // $(this.fb.current).formRender(options);
   }
 
   handler = (name, description) => {
@@ -79,18 +76,15 @@ export default class FormBuilder extends Component {
   render() {
     return (
       <>
-        <Navbar />
-        <Container>
-          <h1 className="mt-5 mb-4">Form Builder</h1>
-          <div id="form-builder" ref={this.fb} />
-          <FormModal show={!this.state.name} onClick={this.handler} />
-          <Modal
-            show={this.state.error}
-            title="Error"
-            body={this.state.error}
-            action={this.redirect}
-          />
-        </Container>
+        <h1 className="mb-4">Form Builder</h1>
+        <div id="form-builder" ref={this.formBuilder} />
+        <FormModal show={!this.state.name} onClick={this.handler} />
+        <Modal
+          show={this.state.error}
+          title="Error"
+          body={this.state.error}
+          action={this.redirect}
+        />
       </>
     );
   }

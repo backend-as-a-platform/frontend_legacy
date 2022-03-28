@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Container, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Navbar from '../nav-bar';
 import http from '../../adapters/http';
 
 const ListForms = () => {
@@ -14,9 +13,8 @@ const ListForms = () => {
 
   return (
     <>
-      <Navbar />
-      <Container>
-        <h1 className="mt-5 mb-4">All forms</h1>
+      <h1 className="mb-4">All forms</h1>
+      {forms.length ? (
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -32,7 +30,8 @@ const ListForms = () => {
                 <td>
                   <Link
                     style={{ textDecoration: 'none' }}
-                    to={`/forms/${form.name}`}
+                    to={`/forms/${form._id}`}
+                    state={{ data: form }}
                   >
                     {form.name}
                   </Link>
@@ -42,7 +41,9 @@ const ListForms = () => {
             ))}
           </tbody>
         </Table>
-      </Container>
+      ) : (
+        <h4>No forms to show</h4>
+      )}
     </>
   );
 };
