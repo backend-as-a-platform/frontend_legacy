@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
+import Home from '.';
 import Navbar from './nav-bar';
 import FormBuilder from './form/form-builder';
 import ListForms from './form/list-forms';
@@ -18,7 +19,7 @@ export default class App extends Component {
         <Navbar />
         <Container className="mt-5">
           <Routes>
-            <Route path="/" />
+            <Route path="/" element={<Home />} />
             <Route path="/forms/new" element={<FormBuilder />} />
             <Route
               path="/forms/:id"

@@ -26,29 +26,25 @@ h1 {
   align-items: center;
   position: absolute;
   top: 20%;
-
   color: #1a875b;
   right: 50%;
   left: 50%;
   font-weight: bolder;
   font-size: 9rem;
   font-family: 'Poppins', sans-serif;
-  
 }
 
 @keyframes slidein {
   from {
     font-size: 10rem;
     letter-spacing: 1cm;
-    
   }
   to {
     letter-spacing: normal;
-    
   }
 }
 
-.btnstart{
+.btnstart {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,11 +57,9 @@ h1 {
   right: 50%;
   margin-top: 5%;
   width: 20%;
-
   font-size: 16px;
-  
-
 }
+
 .side {
   display: flex;
   flex-direction: column;
@@ -77,6 +71,7 @@ h1 {
   color: rgb(88, 95, 90);
   font-family: 'Poppins', sans-serif;
 }
+
 .paragraph {
   display: block;
   flex-direction: column;
@@ -84,31 +79,34 @@ h1 {
   position: absolute;
   color: rgb(88, 88, 88);
   margin-right: 15%;
-  margin-left: 15%;             /* 2 */
+  margin-left: 15%;
   top: 50%;
   font-weight: 280;
-  font-size: 2rem ;
-  
-  
+  font-size: 2rem;
   font-family: 'Poppins', sans-serif;
 }
+
 .paragraph .option {
   line-height: 50px;
   overflow: hidden;
 }
+
 .option li {
   list-style: none;
   animation: slide 12s steps(4) infinite;
 }
+
 @keyframes slide {
   100% {
     top: -360px;
   }
 }
+
 .option li span {
   position: relative;
   margin: 5px 0;
 }
+
 .option li span:after {
   content: '';
   position: absolute;
@@ -119,6 +117,7 @@ h1 {
   border-left: 2px solid rgb(47, 134, 69);
   animation: typing 3s steps(10) infinite;
 }
+
 @keyframes typing {
   40%,
   60% {
@@ -128,7 +127,14 @@ h1 {
     left: 0;
   }
 }
-.show { display: block; transition: 800ms; opacity: 1;
+
+.show {
+  display: block;
+  transition: 800ms;
+  opacity: 1;
 }
-.show.active { transform: translateY (100px) scale (0) rotateY (180deg); opacity: 0;
+
+.show.active {
+  transform: translateY (100px) scale (0) rotateY (180deg);
+  opacity: 0;
 }

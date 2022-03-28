@@ -1,4 +1,4 @@
-const Index = () => (
+const Home = () => (
   <>
     <div class="main">
       <h1 class="headings">
@@ -16,10 +16,9 @@ const Index = () => (
       <ul class="option">
         <li>
           <span>
-            {' '}
             A Low-code application development platform specifically for
-            back-ends based on the technologies Node.js, Express, REST <br />
-            and MongoDB.
+            back-ends based on the technologies Node.js, Express, REST and
+            MongoDB.
           </span>
         </li>
       </ul>
@@ -30,4 +29,4 @@ const Index = () => (
   </>
 );
 
-export default Index;
+export default Home;
