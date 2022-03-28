@@ -39,7 +39,7 @@ const Navbar = () => {
               }`}
               to="/about"
             >
-              Why BaaP
+              Why
             </Link>
             <Link
               className={`nav-link${

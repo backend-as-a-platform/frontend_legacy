@@ -1,19 +1,19 @@
 const Home = () => (
   <>
-    <div class="main">
-      <h1 class="headings">
+    <div className="main">
+      <h1 className="headings">
         BaaP
         <br />
       </h1>
     </div>
     ,
-    <div class="side">
+    <div className="side">
       <h2>Backend as a Platfrom</h2>
     </div>
     ,
-    <div class="paragraph">
-      <div class="text"></div>
-      <ul class="option">
+    <div className="paragraph">
+      <div className="text"></div>
+      <ul className="option">
         <li>
           <span>
             A Low-code application development platform specifically for
@@ -22,7 +22,7 @@ const Home = () => (
           </span>
         </li>
       </ul>
-      <button type="button" class="btnstart">
+      <button type="button" className="btnstart">
         Get Started
       </button>
     </div>

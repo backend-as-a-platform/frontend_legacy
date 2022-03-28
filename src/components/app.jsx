@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
-import Home from '.';
+import Home from './home';
 import Navbar from './nav-bar';
 import FormBuilder from './form/form-builder';
 import ListForms from './form/list-forms';
