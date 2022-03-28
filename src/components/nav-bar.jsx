@@ -20,7 +20,15 @@ const Navbar = () => (
             }`}
             to="/forms/new"
           >
-            Create new form
+            Why Baap?
+          </Link>
+          <Link
+            className={`nav-link${
+              window.location.pathname === '/about' ? ' active' : ''
+            }`}
+            to="/about"
+          >
+            Docs
           </Link>
         </Nav>
         <Nav>
