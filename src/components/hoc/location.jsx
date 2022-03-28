@@ -5,9 +5,8 @@ import { useLocation } from 'react-router';
  * You may think why not use 'window.location', yeah that would work, but it
  * wouldn't have 'state' property provided by react-router.
  */
-const WithLocation = ({ component }) => {
+const WithLocation = ({ component: Component }) => {
   const location = useLocation();
-  const Component = component;
 
   return <Component location={location} />;
 };
