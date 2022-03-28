@@ -19,7 +19,7 @@ const Navbar = () => {
           <Nav className="me-auto">
             <Link
               className={`nav-link${
-                location.pathname === '/forms/new' ? ' active' : ''
+                location.pathname === '/forms/new' ? ' active' : null
               }`}
               to="/forms/new"
             >
@@ -27,17 +27,33 @@ const Navbar = () => {
             </Link>
             <Link
               className={`nav-link${
-                location.pathname === '/forms' ? ' active' : ''
+                location.pathname === '/forms' ? ' active' : null
               }`}
               to="/forms"
             >
               All forms
             </Link>
+            <Link
+              className={`nav-link${
+                location.pathname === '/about' ? ' active' : null
+              }`}
+              to="/about"
+            >
+              Why BaaP?
+            </Link>
+            <Link
+              className={`nav-link${
+                location.pathname === '/docs' ? ' active' : null
+              }`}
+              to="/docs"
+            >
+              Docs
+            </Link>
           </Nav>
           <Nav>
             <Link
               className={`nav-link${
-                window.location.pathname === '/login' ? ' active' : ''
+                window.location.pathname === '/login' ? ' active' : null
               }`}
               to="/login"
             >
