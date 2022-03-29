@@ -11,6 +11,7 @@ import Signup from './auth/signup';
 import NotFound from './404';
 import WithLocation from './hoc/location';
 import '../css/app.css';
+import ListRecords from './form/list-records';
 
 export default class App extends Component {
   render() {
@@ -20,11 +21,15 @@ export default class App extends Component {
         <Container className="mt-5">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/forms/new" element={<FormBuilder />} />
+            <Route
+              path="/forms/new"
+              element={<WithLocation component={FormBuilder} />}
+            />
             <Route
               path="/forms/:id"
               element={<WithLocation component={RenderForm} />}
             />
+            <Route path="/forms/:id/records" element={<ListRecords />} />
             <Route path="/forms" element={<ListForms />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />

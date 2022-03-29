@@ -8,22 +8,18 @@ const Modal = (props) => {
     setShow(props.show);
   }, [props.show]);
 
-  const hide = () => setShow(false);
-
   return (
-    <>
-      <BModal show={show} onHide={props.hide}>
-        <BModal.Header closeButton>
-          <BModal.Title>{props.title}</BModal.Title>
-        </BModal.Header>
-        <BModal.Body>{props.body}</BModal.Body>
-        <BModal.Footer>
-          <Button variant="secondary" onClick={props.action}>
-            Okay
-          </Button>
-        </BModal.Footer>
-      </BModal>
-    </>
+    <BModal show={show} onHide={props.hide}>
+      <BModal.Header closeButton>
+        <BModal.Title>{props.title}</BModal.Title>
+      </BModal.Header>
+      <BModal.Body>{props.body}</BModal.Body>
+      <BModal.Footer>
+        <Button variant={props.btnVariant} onClick={props.action}>
+          {props.btnText}
+        </Button>
+      </BModal.Footer>
+    </BModal>
   );
 };
 

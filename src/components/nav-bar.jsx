@@ -19,19 +19,11 @@ const Navbar = () => {
           <Nav className="me-auto">
             <Link
               className={`nav-link${
-                location.pathname === '/forms/new' ? ' active' : ''
-              }`}
-              to="/forms/new"
-            >
-              Create new form
-            </Link>
-            <Link
-              className={`nav-link${
                 location.pathname === '/forms' ? ' active' : ''
               }`}
               to="/forms"
             >
-              All forms
+              Forms
             </Link>
             <Link
               className={`nav-link${

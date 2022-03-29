@@ -2,7 +2,7 @@ import $ from 'jquery';
 import { Component, createRef } from 'react';
 import { Container } from 'react-bootstrap';
 import Modal from '../modal';
-import http from '../../adapters/http';
+import http from '../../lib/http';
 
 window.jQuery = $;
 window.$ = $;
@@ -16,70 +16,108 @@ class RenderForm extends Component {
     this.fb = createRef();
 
     this.state = {
-      formData: '',
+      form: {
+        name: '',
+        description: '',
+        fields: [],
+      },
       showModal: false,
-      modalBody: 'Are you sure?',
+      modalBody: '',
+      recordAdded: false,
     };
   }
 
   async componentDidMount() {
     await this.populateFormData();
 
-    $(this.fb.current).formRender({ formData: this.state.formData });
-
-    $('#btn-submit').on('click', (e) => {
-      this.setState({ showModal: true });
-    });
+    $(this.fb.current).formRender({ formData: this.state.form.fields });
   }
 
   populateFormData = async () => {
-    let formData;
+    let form;
 
     const submitButton = {
       type: 'button',
       subtype: 'submit',
       label: 'Submit',
-      className: 'btn-primary btn',
-      name: 'btn-submit',
-      value: 'submit',
+      className: 'btn btn-outline-primary',
+      name: 'submit',
     };
 
     if (this.props.location.state) {
-      formData = this.props.location.state.data.fields;
+      form = this.props.location.state.data;
     } else {
       try {
         const res = await http.get(this.props.location.pathname);
-        formData = res.data.fields;
-      } catch (err) {
-        window.location.pathname = '/404';
+        form = res.data;
+      } catch (_) {
+        this.props.navigate('/404');
       }
     }
 
-    if (formData) {
-      formData.push(submitButton);
+    if (form && form.fields) {
+      form.fields.push(submitButton);
 
-      this.setState({ formData });
+      this.setState({ form });
     }
   };
 
-  handleClick = () => {
-    this.setState({ showModal: false });
+  handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {};
+
+    this.state.form.fields.forEach((field) => {
+      data[field.name] = e.target[field.name].value;
+    });
+
+    try {
+      const { status } = await http.post(
+        `${this.props.location.pathname}/records/new`,
+        data
+      );
+
+      if (status === 200) {
+        this.setState({
+          showModal: true,
+          modalBody: 'Record added successfully!',
+          recordAdded: true,
+        });
+      }
+    } catch (_) {
+      this.setState({
+        showModal: true,
+        modalBody: 'Failed to add record, try again!',
+      });
+    }
   };
 
-  handleHide = () => {
+  handleModalClick = () => {
+    this.setState({ showModal: false });
+
+    if (this.state.recordAdded) {
+      this.props.navigate('./records');
+    }
+  };
+
+  handleModalHide = () => {
     this.setState({ showModal: false });
   };
 
   render() {
     return (
       <Container>
-        <div id="form-render" ref={this.fb} />
+        <form name={this.state.form.name} onSubmit={this.handleFormSubmit}>
+          <div id="form-render" ref={this.fb} />
+        </form>
         <Modal
-          title="Confirmation"
+          title="Status"
           show={this.state.showModal}
           body={this.state.modalBody}
-          action={this.handleClick}
-          hide={this.handleHide}
+          btnText="Okay"
+          btnVariant="secondary"
+          action={this.handleModalClick}
+          hide={this.handleModalHide}
         />
       </Container>
     );

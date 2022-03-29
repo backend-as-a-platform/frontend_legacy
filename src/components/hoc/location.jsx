@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 /**
  * This higher order component will give access to 'location' in class components.
@@ -7,8 +7,9 @@ import { useLocation } from 'react-router';
  */
 const WithLocation = ({ component: Component }) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
-  return <Component location={location} />;
+  return <Component location={location} navigate={navigate} />;
 };
 
 export default WithLocation;

@@ -1,34 +1,39 @@
+import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import { Button, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
+import { useNavigate, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { dateWithTime } from '../../lib/date';
 import http from '../../lib/http';
 import Modal from '../modal';
 
-const ListForms = () => {
-  const [forms, setForms] = useState([]);
-  const [formToDelete, setFormToDelete] = useState('');
+const ListRecords = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [records, setRecords] = useState([]);
+  const [recordToDelete, setRecordToDelete] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   const handleModalShow = (id) => {
-    setFormToDelete(id);
+    setRecordToDelete(id);
     setShowModal(true);
   };
 
   const handleModalClick = () => {
-    if (deleteForm(formToDelete)) {
+    if (deleteRecord(recordToDelete)) {
       setShowModal(false);
     }
   };
 
   const handleModalHide = () => setShowModal(false);
 
-  const deleteForm = async (id) => {
-    const newForms = [...forms].filter((form) => form._id != id);
+  const deleteRecord = async (recordId) => {
+    const newRecords = [...records].filter((record) => record._id != recordId);
 
     try {
-      await http.delete(`/forms/${id}`);
+      await http.delete(`/forms/${id}/records/${recordId}`);
 
-      setForms(newForms);
+      setRecords(newRecords);
 
       return true;
     } catch (_) {
@@ -37,61 +42,60 @@ const ListForms = () => {
   };
 
   useEffect(async () => {
-    const { data } = await http.get('/forms');
-
-    setForms(data);
+    try {
+      const { data } = await http.get(`forms/${id}/records`);
+      setRecords(data);
+    } catch (_) {
+      navigate('/404');
+    }
   }, []);
 
   return (
     <>
-      <h1 className="mb-4">Forms</h1>
-      <Link to={'/forms/new'}>
+      <h1 className="mb-4">Records</h1>
+      <Link to={`/forms/${id}`}>
         <Button variant="outline-primary" className="my-3">
-          New form
+          New record
         </Button>
       </Link>
-      {forms.length ? (
+      {records.length ? (
         <>
           <Table striped bordered hover>
             <thead>
               <tr>
                 <th>#</th>
-                <th>Form name</th>
-                <th>Description</th>
+                <th>Created At</th>
+                <th>Updated At</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {forms.map((form, i) => (
-                <tr key={form._id}>
-                  <td>{i + 1}</td>
+              {records.map((record, i) => (
+                <tr key={record._id}>
                   <td>
                     <Link
                       style={{ textDecoration: 'none' }}
-                      to={`/forms/${form._id}`}
-                      state={{ data: form }}
+                      to={`/forms/${id}/records/${record._id}`}
+                      state={{ data: record }}
                     >
-                      {form.name}
+                      {i + 1}
                     </Link>
                   </td>
-                  <td>{form.description}</td>
+                  <td>{dateWithTime(record.createdAt)}</td>
+                  <td>{dateWithTime(record.updatedAt)}</td>
                   <td>
-                    <Link to={`/forms/${form._id}/records`}>
-                      <Button
-                        variant="outline-success"
-                        size="sm"
-                        className="mx-1"
-                      >
-                        Records
-                      </Button>
-                    </Link>
+                    <Button
+                      variant="outline-primary"
+                      size="sm"
+                      className="mx-1"
+                    >
+                      Update
+                    </Button>
                     <Button
                       variant="outline-danger"
                       size="sm"
                       className="mx-1"
-                      onClick={(e) => {
-                        handleModalShow(form._id);
-                      }}
+                      onClick={(e) => handleModalShow(record._id)}
                     >
                       Delete
                     </Button>
@@ -117,4 +121,4 @@ const ListForms = () => {
   );
 };
 
-export default ListForms;
+export default ListRecords;

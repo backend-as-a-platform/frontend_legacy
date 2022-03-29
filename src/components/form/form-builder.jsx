@@ -2,7 +2,7 @@ import $ from 'jquery';
 import { Component, createRef } from 'react';
 import Navbar from '../nav-bar';
 import FormModal from './form-modal';
-import http from '../../adapters/http';
+import http from '../../lib/http';
 import Modal from '../modal';
 
 window.jQuery = $;
@@ -16,8 +16,6 @@ export default class FormBuilder extends Component {
     super(props);
 
     this.formBuilder = createRef();
-    this.handler = this.handler.bind();
-    this.redirect = this.redirect.bind();
 
     this.state = {
       name: '',
@@ -51,7 +49,7 @@ export default class FormBuilder extends Component {
             fields,
           });
 
-          window.location.pathname = '/forms';
+          this.props.navigate('/forms');
         } catch ({ response }) {
           this.setState({ error: response.data.reason });
         }
@@ -82,6 +80,8 @@ export default class FormBuilder extends Component {
         <Modal
           show={this.state.error}
           title="Error"
+          btnVariant="secondary"
+          btnText="Okay"
           body={this.state.error}
           action={this.redirect}
         />

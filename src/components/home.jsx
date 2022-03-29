@@ -6,11 +6,9 @@ const Home = () => (
         <br />
       </h1>
     </div>
-    ,
     <div className="side">
       <h2>Backend as a Platfrom</h2>
     </div>
-    ,
     <div className="paragraph">
       <div className="text"></div>
       <ul className="option">
