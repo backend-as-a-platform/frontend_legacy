@@ -31,8 +31,6 @@ export default class App extends Component {
             />
             <Route path="/forms/:id/records" element={<ListRecords />} />
             <Route path="/forms" element={<ListForms />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>
