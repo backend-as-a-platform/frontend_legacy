@@ -13,7 +13,7 @@ const NotFound = () => (
         </h1>
       </div>
       <h2>
-        come on, let's get you <Link to="/">home</Link>.
+        come on, let's get you <Link to="/">home</Link>
       </h2>
     </div>
   </div>

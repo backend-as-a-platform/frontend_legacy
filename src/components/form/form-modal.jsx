@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
 const FormModal = (props) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [show, setShow] = useState(props.show);
+
+  useEffect(() => setShow(props.show), [props.show]);
 
   return (
     <>
-      <Modal show={props.show} backdrop="static">
-        <Modal.Header>
+      <Modal show={show} onHide={props.hide}>
+        <Modal.Header closeButton>
           <Modal.Title>New form</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -39,7 +42,7 @@ const FormModal = (props) => {
           <Button
             variant="primary"
             onClick={(e) => {
-              props.onClick(name, description);
+              props.action(name, description);
             }}
           >
             Continue

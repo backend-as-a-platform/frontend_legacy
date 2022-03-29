@@ -14,9 +14,9 @@ const Home = () => (
       <ul className="option">
         <li>
           <span>
-            A Low-code application development platform specifically for
-            back-ends based on the technologies Node.js, Express, REST and
-            MongoDB.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
           </span>
         </li>
       </ul>

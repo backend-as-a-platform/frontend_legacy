@@ -63,8 +63,12 @@ export default class FormBuilder extends Component {
     }
   }
 
-  handler = (name, description) => {
+  handleModalClick = (name, description) => {
     this.setState({ name, description });
+  };
+
+  handleModalHide = () => {
+    this.props.navigate('/forms');
   };
 
   redirect = () => {
@@ -76,7 +80,11 @@ export default class FormBuilder extends Component {
       <>
         <h1 className="mb-4">Form Builder</h1>
         <div id="form-builder" ref={this.formBuilder} />
-        <FormModal show={!this.state.name} onClick={this.handler} />
+        <FormModal
+          show={!this.state.name}
+          action={this.handleModalClick}
+          hide={this.handleModalHide}
+        />
         <Modal
           show={this.state.error}
           title="Error"
