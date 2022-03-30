@@ -20,7 +20,9 @@ export default class FormBuilder extends Component {
     this.state = {
       name: '',
       description: '',
-      error: '',
+      showModal: false,
+      modalBody: '',
+      formAdded: false,
     };
 
     this.formOptions = {
@@ -43,55 +45,78 @@ export default class FormBuilder extends Component {
         const fields = JSON.parse(formData);
 
         try {
-          await http.post('/forms/new', {
+          const { status } = await http.post('/forms/new', {
             name,
             description,
             fields,
           });
 
-          this.props.navigate('/forms');
+          if (status === 200) {
+            this.setState({
+              showModal: true,
+              modalBody: 'Form added successfully!',
+              formAdded: true,
+            });
+          }
         } catch ({ response }) {
-          this.setState({ error: response.data.reason });
+          this.setState({ showModal: true });
+
+          if (response.data.reason) {
+            this.setState({ modalBody: response.data.reason });
+          } else {
+            this.setState({ modalBody: 'Failed to add form, try again!' });
+          }
         }
       },
     };
   }
 
   componentDidUpdate() {
-    if (this.state.name && !this.state.error) {
+    if (this.state.name && !(this.state.showModal || this.state.modalBody)) {
       $(this.formBuilder.current).formBuilder(this.formOptions);
     }
   }
 
-  handleModalClick = (name, description) => {
+  handleFormModalClick = (name, description) => {
     this.setState({ name, description });
   };
 
-  handleModalHide = () => {
+  handleFormModalHide = () => {
     this.props.navigate('/forms');
   };
 
-  redirect = () => {
-    window.location.pathname = '/forms/new';
+  handleConfirmationModalClick = () => {
+    this.setState({ showModal: false });
+
+    if (this.state.formAdded) {
+      this.props.navigate('/forms');
+    } else {
+      window.location.pathname = '/forms/new';
+    }
+  };
+
+  handleConfirmationModalHide = () => {
+    this.setState({ showModal: false });
   };
 
   render() {
     return (
       <>
-        <h1 className="mb-4">Form Builder</h1>
-        <div id="form-builder" ref={this.formBuilder} />
+        <h1 className='mb-4'>Form Builder</h1>
+        <div id='form-builder' ref={this.formBuilder} />
         <FormModal
           show={!this.state.name}
-          action={this.handleModalClick}
-          hide={this.handleModalHide}
+          action={this.handleFormModalClick}
+          hide={this.handleFormModalHide}
         />
         <Modal
-          show={this.state.error}
-          title="Error"
-          btnVariant="secondary"
-          btnText="Okay"
-          body={this.state.error}
-          action={this.redirect}
+          title='Status'
+          show={this.state.showModal}
+          body={this.state.modalBody}
+          btnText='Okay'
+          btnVariant='secondary'
+          action={this.handleConfirmationModalClick}
+          hide={this.handleConfirmationModalHide}
         />
       </>
     );
