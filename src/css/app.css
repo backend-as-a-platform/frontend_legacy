@@ -26,12 +26,11 @@ h1 {
   align-items: center;
   position: absolute;
   top: 20%;
-  color: #1a875b;
   right: 50%;
   left: 50%;
   font-weight: bolder;
   font-size: 9rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 @keyframes slidein {
@@ -69,7 +68,7 @@ h1 {
   right: 35%;
   left: 34%;
   color: rgb(88, 95, 90);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .paragraph {
@@ -83,7 +82,7 @@ h1 {
   top: 50%;
   font-weight: 280;
   font-size: 2rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .paragraph .option {
@@ -108,7 +107,7 @@ h1 {
 }
 
 .option li span:after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   width: 100%;
