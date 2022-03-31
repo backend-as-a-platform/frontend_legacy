@@ -42,30 +42,30 @@ const NotFound = () => {
   ];
 
   return (
-    // <div id="notfound">
-    //   <div className="notfound">
-    //     <div className="notfound-404">
-    //       <h3>Oops! Page not found</h3>
-    //       <h1>
-    //         <span>4</span>
-    //         <span>0</span>
-    //         <span>4</span>
-    //       </h1>
-    //     </div>
-    //     <h2>
-    //       come on, let's get you <Link to="/">home</Link>
-    //     </h2>
-    //   </div>
-    // </div>
+    <div id="notfound">
+      <div className="notfound">
+        <div className="notfound-404">
+          <h3>Oops! Page not found</h3>
+          <h1>
+            <span>4</span>
+            <span>0</span>
+            <span>4</span>
+          </h1>
+        </div>
+        <h2>
+          come on, let's get you <Link to="/">home</Link>
+        </h2>
+      </div>
+    </div>
     <>
-      <DataTable
+      {/* <DataTable
         columns={columns}
         data={data}
         pagination
         subHeader
         selectableRows
         persistTableHead
-      />
+      /> */}
     </>
   );
 };
