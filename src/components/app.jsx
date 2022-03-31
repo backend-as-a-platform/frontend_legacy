@@ -4,14 +4,12 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './home';
 import Navbar from './nav-bar';
 import FormBuilder from './form/form-builder';
-import ListForms from './form/list-forms';
 import RenderForm from './form/render-form';
-import Login from './auth/login';
-import Signup from './auth/signup';
-import NotFound from './404';
-import WithLocation from './hoc/location';
-import '../css/app.css';
+import ListForms from './form/list-forms';
 import ListRecords from './form/list-records';
+import WithLocation from './hoc/location';
+import NotFound from './404';
+import '../css/app.css';
 
 export default class App extends Component {
   render() {

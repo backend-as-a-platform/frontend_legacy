@@ -1,13 +1,7 @@
-import $ from 'jquery';
 import { Component, createRef } from 'react';
 import { Container } from 'react-bootstrap';
 import Modal from '../modal';
 import http from '../../lib/http';
-
-window.jQuery = $;
-window.$ = $;
-
-require('formBuilder/dist/form-render.min');
 
 class RenderForm extends Component {
   constructor(props) {

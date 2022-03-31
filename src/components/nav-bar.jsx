@@ -3,7 +3,7 @@ import { Container, Nav, Navbar as NavBar } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import Login from './auth/login';
 import Signup from './auth/signup';
-import logo from '/public/logo.png';
+import logo from '../media/logo.png';
 
 const Navbar = () => {
   const location = useLocation();

@@ -1,17 +1,17 @@
 const Home = () => (
   <>
-    <div className='main'>
-      <h1 className='headings text-success'>
+    <div className="main">
+      <h1 className="headings">
         BaaP
         <br />
       </h1>
     </div>
-    <div className='side'>
-      <h2>Backend as a Platform</h2>
+    <div className="side">
+      <h2>Backend as a Platfrom</h2>
     </div>
-    <div className='paragraph'>
-      <div className='text'></div>
-      <ul className='option'>
+    <div className="paragraph">
+      <div className="text"></div>
+      <ul className="option">
         <li>
           <span>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -20,9 +20,6 @@ const Home = () => (
           </span>
         </li>
       </ul>
-      <button type='button' className='btnstart'>
-        Get Started
-      </button>
     </div>
   </>
 );

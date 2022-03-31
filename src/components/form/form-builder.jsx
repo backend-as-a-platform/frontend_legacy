@@ -1,15 +1,8 @@
-import $ from 'jquery';
 import { Component, createRef } from 'react';
 import Navbar from '../nav-bar';
 import FormModal from './form-modal';
 import http from '../../lib/http';
 import Modal from '../modal';
-
-window.jQuery = $;
-window.$ = $;
-
-require('jquery-ui-sortable');
-require('formBuilder');
 
 export default class FormBuilder extends Component {
   constructor(props) {
@@ -102,19 +95,19 @@ export default class FormBuilder extends Component {
   render() {
     return (
       <>
-        <h1 className='mb-4'>Form Builder</h1>
-        <div id='form-builder' ref={this.formBuilder} />
+        <h1 className="mb-4">Form Builder</h1>
+        <div id="form-builder" ref={this.formBuilder} />
         <FormModal
           show={!this.state.name}
           action={this.handleFormModalClick}
           hide={this.handleFormModalHide}
         />
         <Modal
-          title='Status'
+          title="Status"
           show={this.state.showModal}
           body={this.state.modalBody}
-          btnText='Okay'
-          btnVariant='secondary'
+          btnText="Okay"
+          btnVariant="secondary"
           action={this.handleConfirmationModalClick}
           hide={this.handleConfirmationModalHide}
         />
