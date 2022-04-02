@@ -13,10 +13,8 @@ const Home = () => (
       <div className="text"></div>
       <ul className="option">
         <li>
-          <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+          <span className="text-center">
+            Design APIs fast, manage content easily.
           </span>
         </li>
       </ul>

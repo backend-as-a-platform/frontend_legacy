@@ -11,28 +11,26 @@ import WithLocation from './hoc/location';
 import NotFound from './404';
 import '../css/app.css';
 
-export default class App extends Component {
-  render() {
-    return (
-      <>
-        <Navbar />
-        <Container className="mt-5">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/forms/new"
-              element={<WithLocation component={FormBuilder} />}
-            />
-            <Route
-              path="/forms/:id"
-              element={<WithLocation component={RenderForm} />}
-            />
-            <Route path="/forms/:id/records" element={<ListRecords />} />
-            <Route path="/forms" element={<ListForms />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Container>
-      </>
-    );
-  }
-}
+const App = () => (
+  <>
+    <Navbar />
+    <Container className="mt-5">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/forms/new"
+          element={<WithLocation component={FormBuilder} />}
+        />
+        <Route
+          path="/forms/:id"
+          element={<WithLocation component={RenderForm} />}
+        />
+        <Route path="/forms/:id/records" element={<ListRecords />} />
+        <Route path="/forms" element={<ListForms />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Container>
+  </>
+);
+
+export default App;
